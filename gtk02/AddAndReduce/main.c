@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 
 gint count = 0;
-char buf[5];
+char buf[894    ];
 
 //增加按钮每次按下，label中的数就会加1
 void increase(GtkWidget* widget,gpointer label)
@@ -19,6 +19,12 @@ void decrease(GtkWidget *widget,gpointer label)
     gtk_label_set_text(label,buf);
 }
 
+void square(GtkWidget *widget,gpointer label)
+{
+    count=count*count;
+    sprintf(buf,"%d",count);
+    gtk_label_set_text(label,buf);
+}
 int main(int argc,char *argv[])
 {
 
@@ -27,7 +33,7 @@ int main(int argc,char *argv[])
     GtkWidget *frame;
     GtkWidget *plus;
     GtkWidget *minus;
-
+    GtkWidget *multiply;
     gtk_init(&argc,&argv);
 
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);  //新建窗口
@@ -46,6 +52,10 @@ int main(int argc,char *argv[])
     gtk_widget_set_size_request(minus,80,35); //设置大小
     gtk_fixed_put(GTK_FIXED(frame),minus,50,80);
 
+    multiply = gtk_button_new_with_label("^2"); //新建按钮
+    gtk_widget_set_size_request(multiply,80,35); //设置大小
+    gtk_fixed_put(GTK_FIXED(frame),multiply,50,140);
+
     label = gtk_label_new("0");   //新建标签
     gtk_fixed_put(GTK_FIXED(frame),label,190,58);
 
@@ -55,7 +65,7 @@ int main(int argc,char *argv[])
     g_signal_connect(window,"destroy",G_CALLBACK(gtk_main_quit),NULL);
     g_signal_connect(plus,"clicked",G_CALLBACK(increase),label);
     g_signal_connect(minus,"clicked",G_CALLBACK(decrease),label);
-
+     g_signal_connect(multiply,"clicked",G_CALLBACK(square),label);
     gtk_main();
 
     return 0;

@@ -1,4 +1,5 @@
 #include <gtk/gtk.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 //制作应用图标
 GdkPixbuf *create_pixbuf(const gchar *filename)
@@ -32,7 +33,7 @@ int main(int argc,char *argv[])
     gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);
 
     //设置程序图标
-    gtk_window_set_icon(GTK_WINDOW(window),create_pixbuf("icon.png"));
+    gtk_window_set_icon(GTK_WINDOW(window),create_pixbuf("Butterfly.bmp"));
     gtk_widget_show(window);
 
     //注册关闭事件

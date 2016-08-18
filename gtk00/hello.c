@@ -11,7 +11,7 @@ int main(int argc,char *argv[])
 
 	// 生成窗体之后需要显示
 	gtk_widget_show(window);
-	
+
 	// 相当于让程序进入主循环，等待事件的发生
 	gtk_main();
 
